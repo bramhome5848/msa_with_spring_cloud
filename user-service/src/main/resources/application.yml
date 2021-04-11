@@ -1,11 +1,13 @@
 server:
-  port: 9001
+  port: 0 # random port 사용
 
 spring:
   application:
     name: user-service
 
 eureka:
+  instance: #random port 설정시 0 으로 표시되는 것을 막기 위함 -> 같은 서버의 여러 인스턴스 실행시 인식하기 위함
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
     register-with-eureka: true # 자신에게 자신을 등록할지 여부
     fetch-registry: true # 외부에서 검색 가능한지 여부
