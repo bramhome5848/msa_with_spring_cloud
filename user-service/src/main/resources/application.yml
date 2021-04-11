@@ -7,7 +7,7 @@ spring:
 
 eureka:
   client:
-    register-with-eureka: false # 자신에게 자신을 등록할지 여부
-    fetch-registry: false # 외부에서 검색 가능한지 여부
+    register-with-eureka: true # 자신에게 자신을 등록할지 여부
+    fetch-registry: true # 외부에서 검색 가능한지 여부
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
