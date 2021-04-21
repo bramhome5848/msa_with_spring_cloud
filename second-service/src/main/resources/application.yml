@@ -1,11 +1,16 @@
 server:
-  port: 8082
+  port: 0 # random port -> eureka dashboard 에서는 0으로 남게됨
+  # -> 같은 여러서버가 1개로 표현되버림 ->instance-id 이용
 
 spring:
   application:
-    name: my-first-service
+    name: my-second-service
 
 eureka:
   client:
-    fetch-registry: false
-    register-with-eureka: false
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone : http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
