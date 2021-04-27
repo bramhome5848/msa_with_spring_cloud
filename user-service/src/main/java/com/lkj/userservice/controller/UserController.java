@@ -17,13 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")    //쓰지 않은 것과 같음..
 public class UserController {
 
-    private Environment env;
-    private Greeting greeting;
-    private UserService userService;
+    //private final Environment env;
+    private final Greeting greeting;
+    private final UserService userService;
 
     @Autowired
-    public UserController(Environment env, Greeting greeting, UserService userService) {
-        this.env = env;
+    public UserController(Greeting greeting, UserService userService) {
         this.greeting = greeting;
         this.userService = userService;
     }
