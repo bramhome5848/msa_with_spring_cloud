@@ -10,6 +10,9 @@ spring:
       settings:
         web-allow-others: true
       path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
 
 eureka:
   instance: #random port 설정시 0 으로 표시되는 것을 막기 위함 -> 같은 서버의 여러 인스턴스 실행시 인식하기 위함
