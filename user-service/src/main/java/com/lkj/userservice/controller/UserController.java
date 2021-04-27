@@ -17,28 +17,30 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")    //쓰지 않은 것과 같음..
 public class UserController {
 
-    //private final Environment env;
+    private final Environment env;
     private final Greeting greeting;
     private final UserService userService;
 
     @Autowired
-    public UserController(Greeting greeting, UserService userService) {
+    public UserController(Environment env, Greeting greeting, UserService userService) {
+        this.env = env;
         this.greeting = greeting;
         this.userService = userService;
     }
 
-    @GetMapping("/health_check")
+    @GetMapping("/user-service/health_check")
     public String status() {
-        return "It's Working in User Service";
+        return String.format("It's Working in User Service on PORT %s",
+                env.getProperty("local.server.port"));
     }
 
-    @GetMapping("/welcome")
+    @GetMapping("/user-service/welcome")
     public String welcome() {
         //return env.getProperty("greeting.message"); //application.yml 의 값 직접 사용
         return greeting.getMessage();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/user-service/users")
     public ResponseEntity<ResponseUser> createUser(@RequestBody RequestUser user) {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
