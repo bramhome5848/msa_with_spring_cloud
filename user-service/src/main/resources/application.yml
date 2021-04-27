@@ -13,3 +13,6 @@ eureka:
     fetch-registry: true # 외부에서 검색 가능한지 여부
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+
+greeting:
+  message: Welcome to the Simple E-commerce.
