@@ -24,6 +24,10 @@ spring:
           uri: lb://USER-SERVICE  #lb -> load balancing
           predicates:
             - Path=/user-service/**
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE  #lb -> load balancing
+          predicates:
+            - Path=/catalog-service/**
         - id: first-service
           uri: lb://MY-FIRST-SERVICE  #lb -> load balancing
           predicates:
