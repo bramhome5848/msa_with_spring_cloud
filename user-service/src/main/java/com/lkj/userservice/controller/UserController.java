@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UserController {
 
     private final Environment env;
@@ -51,6 +51,7 @@ public class UserController {
 
         UserDto userDto = mapper.map(user, UserDto.class);
         userService.createUser(userDto);
+
 
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);

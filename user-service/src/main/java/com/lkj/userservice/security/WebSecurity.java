@@ -31,7 +31,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();    //모든 요청에 대해 permit
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("220.73.19.214") //본인 아이피에 대해서만 통
+                .hasIpAddress("172.30.1.20") //api gateway 에 의해서만 통과
                 .and()
                 .addFilter(getAuthenticationFilter());  //필터를 통과한 데이터에 대해서만 권한 부여
 
