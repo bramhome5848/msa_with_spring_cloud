@@ -20,6 +20,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
     private final Environment env;
 
     public AuthorizationHeaderFilter(Environment env) {
+        super(Config.class);
         this.env = env;
     }
 
@@ -35,7 +36,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             }
 
             String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-            String jwt = authorizationHeader.replace("Bearer", "");
+            String jwt = authorizationHeader.replace("Bearer ", "");
 
             if(!isJwtValid(jwt)) {
                 return onError(exchange, "JWT token is not valid", HttpStatus.UNAUTHORIZED);
@@ -70,7 +71,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(status);
 
-        log.error("err");
+        log.error(err);
         return response.setComplete();
     }
 
