@@ -30,6 +30,15 @@ logging:
   level:
     com.lkj.userservice: DEBUG
 
-token:
-  expiration_time: 86400000  # 하루(ms)
-  secret: user_token  # 암호화 seed
+# config server 로 이동된 내용
+#token:
+#  expiration_time: 86400000  # 하루(ms)
+#  secret: user_token  # 암호화 seed
+
+#refresh -> config server 에서 참조한 yml 파일 변경시 서버 재기동 없이 적용
+#refresh -> post 방식으로 전달, postman 사용
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans

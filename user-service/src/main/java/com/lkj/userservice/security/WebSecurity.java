@@ -30,6 +30,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();    //모든 요청에 대해 permit
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();   //actuator permit
         http.authorizeRequests().antMatchers("/**")
                 .hasIpAddress("172.30.1.20") //api gateway 에 의해서만 통과
                 .and()
