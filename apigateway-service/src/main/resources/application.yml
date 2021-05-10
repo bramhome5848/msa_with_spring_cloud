@@ -44,6 +44,16 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         ##################
+        ###### actuator ######
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET, POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        ##################
         ###### 나머지 ######
         - id: user-service
           uri: lb://USER-SERVICE
@@ -85,5 +95,12 @@ spring:
                 preLogger: true
                 postLogger: true
 
-token:
-  secret: user_token
+# config server 참조 yml 로 이동
+#token:
+#  secret: user_token
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace
