@@ -4,3 +4,5 @@ spring:
     config:
       uri: http://127.0.0.1:8888  #config-server
       name: ecommerce
+  profiles:
+    active: dev
