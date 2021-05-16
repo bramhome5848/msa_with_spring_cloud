@@ -34,6 +34,11 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
         <!-- application 상태, 모니터링, metric 수집을 위한 end point 제공 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
