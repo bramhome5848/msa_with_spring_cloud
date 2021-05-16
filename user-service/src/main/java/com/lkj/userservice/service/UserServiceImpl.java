@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService{
     private final BCryptPasswordEncoder passwordEncoder;
     private final Environment env;
     private final RestTemplate restTemplate;
+
     private final OrderServiceClient orderServiceClient;
 
     @Autowired
@@ -98,12 +99,14 @@ public class UserServiceImpl implements UserService{
 
         //Using a feign client
         //Feign Exception Handling
-        List<ResponseOrder> orderList = null;
-        try{
-            orderList = orderServiceClient.getOrders(userId);
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//        List<ResponseOrder> orderList = null;
+//        try{
+//            orderList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
+
+        List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
 
         userDto.setOrders(orderList);
         return userDto;
