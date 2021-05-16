@@ -34,7 +34,7 @@ greeting:
 
 logging:
   level:
-    com.lkj.userservice: DEBUG
+    com.lkj.userservice.client: DEBUG
 
 # config server 로 이동된 내용
 #token:

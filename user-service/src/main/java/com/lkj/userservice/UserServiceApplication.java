@@ -1,5 +1,6 @@
 package com.lkj.userservice;
 
+import feign.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -29,5 +30,9 @@ public class UserServiceApplication {
         return new RestTemplate();
     }
 
+    @Bean
+    public Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
+    }
 
 }
