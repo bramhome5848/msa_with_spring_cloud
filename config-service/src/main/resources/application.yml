@@ -14,7 +14,7 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///Users/LeeKyungJin/desktop/native-file-repo
+          search-locations: file://${user.home}/desktop/native-file-repo
         git:
           uri: https://github.com/bramhome5848/spring-cloud-config
 #          username: ''
