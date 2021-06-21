@@ -34,7 +34,7 @@ public class KafkaConsumer {
         try {
             map = mapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>(){});
         } catch (JsonProcessingException ex) {
-            ex.printStackTrace();;
+            ex.printStackTrace();
         }
 
         CatalogEntity entity = catalogRepository.findByProductId((String) map.get("productId"));
