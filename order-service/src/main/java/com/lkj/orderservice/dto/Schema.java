@@ -13,5 +13,4 @@ public class Schema {
     private List<Field> fields;
     private boolean optional;
     private String name;
-
 }
